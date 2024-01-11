@@ -22,7 +22,7 @@ jobs:
       id: trufflehog
       run: |
         # Run TruffleHog scan
-        trufflehog --entropy all --repo_path https://github.com/${{ github.repository }}.git
+        trufflehog --entropy all .
     - name: Save TruffleHog scan results
       if: always()
       run: |
