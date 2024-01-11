@@ -17,7 +17,7 @@ jobs:
       run: |
         # Install any dependencies here, e.g., TruffleHog
         # Example: pip install trufflehog
-        pip install trufflehog
+        pip install --upgrade trufflehog
     - name: Run TruffleHog scan
       id: trufflehog
       run: |
@@ -27,7 +27,7 @@ jobs:
       if: always()
       run: |
         # Save TruffleHog scan results to a file
-        trufflehog --entropy . --json > trufflehog_results.json
+        trufflehog --entropy all . --json > trufflehog_results.json
         echo "::set-output name=results::trufflehog_results.json"
     - name: Check for issues and prevent further actions
       if: steps.trufflehog.outputs.results
