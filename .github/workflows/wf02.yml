@@ -22,7 +22,6 @@ jobs:
       id: trufflehog
       run: |
         # Run TruffleHog scan
-        #trufflehog --regex .
         trufflehog --entropy .
     - name: Save TruffleHog scan results
       if: always()
