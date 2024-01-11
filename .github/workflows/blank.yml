@@ -1,0 +1,37 @@
+name: TruffleHog Scan
+
+on:
+  push:
+    branches:
+      - '*'  # Adjust this based on your branch name
+
+jobs:
+  trufflehog_scan:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Install dependencies
+      run: |
+        # Install any dependencies here, e.g., TruffleHog
+        # Example: pip install trufflehog
+        pip install trufflehog
+
+    - name: Run TruffleHog scan
+      id: trufflehog
+      run: |
+        # Run TruffleHog scan
+        trufflehog --regex .
+
+    - name: Save TruffleHog scan results
+      if: always()
+      run: |
+        # Save TruffleHog scan results to a file
+        trufflehog --regex . --json > trufflehog_results.json
+        echo "::set-output name=results::trufflehog_results.json"
+
+    - name: Fail if TruffleHog found issues
+      if: steps.trufflehog.outputs.results != '{}'
+      run: exit 1
