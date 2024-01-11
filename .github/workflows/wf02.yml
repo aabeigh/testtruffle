@@ -22,13 +22,14 @@ jobs:
       id: trufflehog
       run: |
         # Run TruffleHog scan
-        trufflehog --entropy=NO .
+        trufflehog --entropy=YES .
     - name: Save TruffleHog scan results
       if: always()
       run: |
         # Save TruffleHog scan results to a file
-        trufflehog --entropy=NO . --json > trufflehog_results.json
+        trufflehog --entropy=YES . --json > trufflehog_results.json
         echo "::set-output name=results::trufflehog_results.json"
+        cat trufflehog_results.json
     - name: Check for issues and prevent further actions
       if: steps.trufflehog.outputs.results
       run: |
