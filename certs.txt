@@ -3,5 +3,5 @@ PASSWORD="password"
 
 HTTP_USER="user1"
 HTTP_TOKEN="DRFuteQw$#riYhte69AwerDdf-$"
-
+API_TOKEN="./ST32323[qwqwqaza21332R@~:~@~12390u"
 API_TOKEN="./[qwqwqaza21332R@~:~@~12390u"
