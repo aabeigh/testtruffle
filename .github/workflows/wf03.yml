@@ -23,7 +23,7 @@ jobs:
       id: trufflehog
       run: |
         # Run TruffleHog scan
-        trufflehog . --entropy all
+        trufflehog . --entropy=YES all
 
     - name: Save TruffleHog scan results
       if: always()
