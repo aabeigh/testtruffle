@@ -1,4 +1,4 @@
-name: TruffleHog Scan
+name: TruffleHog Scan2
 
 on:
   push:
